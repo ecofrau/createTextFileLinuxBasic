@@ -1,0 +1,86 @@
+test@MBP-Usertest ~ % mkdir -p ~/start
+touch ~/start/1.txt
+test@MBP-Usertest ~ % echo "Start" > ~/start/1.txt
+test@MBP-Usertest ~ % date >> ~/start/1.txt
+test@MBP-Usertest ~ % sudo mkdir -p /opt/task
+Password:
+test@MBP-Usertest ~ % sudo cp ~/start/1.txt /opt/task/start.txt
+test@MBP-Usertest ~ % ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % sudo ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % ls -ld /opt/task
+drwxr-xr-x  3 root  wheel  96 Jan 24 22:58 /opt/task
+test@MBP-Usertest ~ % sudo ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % sudo chmod u+w /opt/task
+test@MBP-Usertest ~ % sudo chown your_username /opt/task/start.txt
+chown: your_username: illegal user name
+test@MBP-Usertest ~ % sudo chown ~ /opt/task/start.txt
+chown: /Users/test: illegal user name
+test@MBP-Usertest ~ % ls -la / | tail -n 4 > ~/start.txt  
+test@MBP-Usertest ~ % sudo bash -c "ls -la / | tail -n 4 >> /opt/task/start.txt" 
+test@MBP-Usertest ~ % sudo mkdir -p /opt/task
+
+test@MBP-Usertest ~ % sudo cp ~/start/1.txt /opt/task/start.txt
+
+test@MBP-Usertest ~ % ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % ls -la / | tail -n 4 >> /opt/task/start.txt
+zsh: permission denied: /opt/task/start.txt
+test@MBP-Usertest ~ % ls -la / | tail -n 4 > ~/start.txt
+test@MBP-Usertest ~ % echo "Output saved to ~/start.txt"
+Output saved to ~/start.txt
+test@MBP-Usertest ~ % sudo cp -r /opt/task /tmp/testnew
+test@MBP-Usertest ~ % cat ~/readme.txt >> /tmp/testnew/task/start.txt
+zsh: no such file or directory: /tmp/testnew/task/start.txt
+test@MBP-Usertest ~ % mkdir -p /tmp/testnew                                    
+test@MBP-Usertest ~ % cp -r /opt/task /tmp/testnew
+cp: /tmp/testnew/task: Permission denied
+cp: /opt/task: unable to copy extended attributes to /tmp/testnew/task: Permission denied
+cp: /tmp/testnew/task/start.txt: No such file or directory
+test@MBP-Usertest ~ % mkdir -p /tmp/testnew
+test@MBP-Usertest ~ % ls -ld /tmp/testnew
+drwxr-xr-x  3 root  wheel  96 Jan 24 23:09 /tmp/testnew
+test@MBP-Usertest ~ % sudo cp -r /opt/task /tmp/testnew
+test@MBP-Usertest ~ % ls -ld /opt/task
+drwxr-xr-x  3 root  wheel  96 Jan 24 22:58 /opt/task
+test@MBP-Usertest ~ % sudo cp -r --no-xattrs /opt/task /tmp/testnew
+cp: illegal option -- -
+usage: cp [-R [-H | -L | -P]] [-fi | -n] [-aclpsvXx] source_file target_file
+       cp [-R [-H | -L | -P]] [-fi | -n] [-aclpsvXx] source_file ... target_directory
+test@MBP-Usertest ~ % cp -r /opt/task ~/testnew
+test@MBP-Usertest ~ % sudo cp -r /opt/task /tmp/testnew
+test@MBP-Usertest ~ % cat ~/readme.txt >> /tmp/testnew/task/start.txt
+zsh: permission denied: /tmp/testnew/task/start.txt
+test@MBP-Usertest ~ % ls -ld /tmp/testnew/task
+drwxr-xr-x  3 root  wheel  96 Jan 24 23:14 /tmp/testnew/task
+test@MBP-Usertest ~ % chmod +w /tmp/testnew/task
+test@MBP-Usertest ~ % touch /tmp/testnew/task/start.txt
+touch: /tmp/testnew/task/start.txt: Permission denied
+test@MBP-Usertest ~ % sudo cat ~/readme.txt >> /tmp/testnew/task/start.txt
+zsh: permission denied: /tmp/testnew/task/start.txt
+test@MBP-Usertest ~ % cat ~/readme.txt >> ~/start.txt
+cat: /Users/test/readme.txt: No such file or directory
+test@MBP-Usertest ~ % ls -ld /tmp/testnew/task
+drwxr-xr-x  3 root  wheel  96 Jan 24 23:14 /tmp/testnew/task
+test@MBP-Usertest ~ % sudo chmod +w /tmp/testnew/task
+test@MBP-Usertest ~ % ls ~
+12:12:25DDLGitAnny.sql	Movies			first
+2025first-app		Music			humans
+Applications		Pictures		install.sh
+Desktop			Public			oe..sql
+Documents		TestFolder2		oe.sql
+Downloads		TestRepoForStudy	planets
+GT301023-e		animals			start
+IdeaProjects		feProfCourse		start.txt
+Library			file			testnew
+test@MBP-Usertest ~ % echo "This is a readme file." > ~/readme.txt 
+test@MBP-Usertest ~ % sudo ls -ld /tmp/testnew/task
+drwxr-xr-x  3 root  wheel  96 Jan 24 23:14 /tmp/testnew/task
+test@MBP-Usertest ~ % touch ~/start.txt
+test@MBP-Usertest ~ % cat ~/readme.txt >> ~/start.txt
+test@MBP-Usertest ~ % sudo rm -rf /opt/task
+test@MBP-Usertest ~ % 
